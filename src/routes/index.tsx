@@ -187,7 +187,7 @@ function Index() {
 
   return (
     <div ref={containerRef} className="min-h-screen">
-      {/* Atualize a capa do single Eterno Deus com a imagem que está em anexo */}
+      {/* Atualize a capa dos singles "Meu Socorro" (imagem em anexo 02), "A Cruz" (imagem em anexo 03), "Dia de Festa" (imagem em anexo 04), "A Promessa" (imagem em anexo 05. */}
       {/* ─── 1. HERO ─── */}
       <section className="relative flex h-screen min-h-[640px] items-center justify-center overflow-hidden px-4">
         {/* PLACEHOLDER: imagem de fundo do hero */}
