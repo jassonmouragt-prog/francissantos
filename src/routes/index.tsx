@@ -440,7 +440,7 @@ function Index() {
                 transitionDelay: `${i * 50}ms`,
                 zIndex: i 
               }}
-              className="reveal group relative aspect-[3/4] w-48 overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-2xl transition-all duration-500 hover:z-50 hover:-translate-y-4 hover:scale-110 hover:border-gold/50 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] sm:w-56 lg:w-64"
+              className="reveal group relative aspect-[3/4] w-48 origin-center overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-2xl transition-all duration-500 ease-out hover:z-50 hover:!-translate-y-6 hover:!scale-[1.35] hover:border-gold/60 hover:shadow-[0_0_45px_rgba(212,175,55,0.55)] sm:w-56 lg:w-64"
             >
               <img
                 src={img.url}
