@@ -429,22 +429,25 @@ function Index() {
       </section>
       
       {/* ─── 3.2 GALERIA ─── */}
-      <section className="mx-auto max-w-6xl px-4 py-20">
+      <section className="mx-auto max-w-5xl px-4 py-20">
         <SectionTitle kicker="Momentos" title="Galeria" />
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="flex justify-center -space-x-12 py-10 sm:-space-x-16 lg:-space-x-20">
           {galleryImages.map((img, i) => (
             <div
               key={i}
               data-reveal
-              style={{ transitionDelay: `${i * 50}ms` }}
-              className="reveal group relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/5 bg-black/40 transition-all duration-500 hover:scale-[1.02] hover:border-gold/50 hover:shadow-[0_0_25px_rgba(212,175,55,0.3)]"
+              style={{ 
+                transitionDelay: `${i * 50}ms`,
+                zIndex: i 
+              }}
+              className="reveal group relative aspect-[3/4] w-48 overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-2xl transition-all duration-500 hover:z-50 hover:-translate-y-4 hover:scale-110 hover:border-gold/50 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] sm:w-56 lg:w-64"
             >
               <img
                 src={img.url}
                 alt={img.alt}
-                className="h-full w-full object-cover opacity-30 transition-all duration-700 group-hover:scale-110 group-hover:opacity-100"
+                className="h-full w-full object-cover opacity-40 transition-all duration-700 group-hover:opacity-100"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-0" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 transition-opacity group-hover:opacity-0" />
             </div>
           ))}
         </div>
