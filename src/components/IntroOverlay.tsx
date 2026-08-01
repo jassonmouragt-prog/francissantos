@@ -2,15 +2,16 @@ import { useEffect, useState } from "react";
 
 /** Cortina preta inicial: revela "FRANCIS SANTOS" com fade-in + glow e depois abre o site. */
 export function IntroOverlay() {
-  const [mounted, setMounted] = useState(false);
-  const [show, setShow] = useState(false);
+  // Renderiza já no primeiro paint (inclusive SSR) para nunca piscar o site antes.
+  const [show, setShow] = useState(true);
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    if (sessionStorage.getItem("fs-intro-seen")) return;
+    if (sessionStorage.getItem("fs-intro-seen")) {
+      setShow(false);
+      return;
+    }
     sessionStorage.setItem("fs-intro-seen", "1");
-    setShow(true);
     document.body.style.overflow = "hidden";
     const t1 = setTimeout(() => setFading(true), 2400);
     const t2 = setTimeout(() => {
@@ -24,7 +25,7 @@ export function IntroOverlay() {
     };
   }, []);
 
-  if (!mounted || !show) return null;
+  if (!show) return null;
 
   return (
     <div
