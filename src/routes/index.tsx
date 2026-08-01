@@ -4,6 +4,10 @@ import { Copy, Check, Play, X, Disc3, Youtube, Music2 } from "lucide-react";
 import heroAsset from "@/assets/francis-hero.jpg.asset.json";
 import eternoDeusAsset from "@/assets/ETERNO_DEUS.jpg.asset.json";
 import filhoDeDaviAsset from "@/assets/FILHO_DE_DAVI.jpg.asset.json";
+import meuSocorroAsset from "@/assets/MEU_SOCORRO.jpg.asset.json";
+import aCruzAsset from "@/assets/A_CRUZ.jpg.asset.json";
+import diaDeFestaAsset from "@/assets/DIA_DE_FESTA.jpg.asset.json";
+import aPromessaAsset from "@/assets/A_PROMESSA.jpg.asset.json";
 import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
@@ -183,7 +187,7 @@ function Index() {
 
   return (
     <div ref={containerRef} className="min-h-screen">
-      {/* Atualize a capa do single Eterno Deus com a imagem que está em anexo */}
+      {/* Atualize a capa dos singles "Meu Socorro" (imagem em anexo 02), "A Cruz" (imagem em anexo 03), "Dia de Festa" (imagem em anexo 04), "A Promessa" (imagem em anexo 05. */}
       {/* ─── 1. HERO ─── */}
       <section className="relative flex h-screen min-h-[640px] items-center justify-center overflow-hidden px-4">
         {/* PLACEHOLDER: imagem de fundo do hero */}
@@ -267,6 +271,42 @@ function Index() {
                 <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-gold/20 transition-all duration-500 group-hover:ring-gold/60">
                   <img
                     src={filhoDeDaviAsset.url}
+                    alt={r.titulo}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-transparent" />
+                </div>
+              ) : r.titulo === "Meu Socorro (Acústico)" ? (
+                <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-gold/20 transition-all duration-500 group-hover:ring-gold/60">
+                  <img
+                    src={meuSocorroAsset.url}
+                    alt={r.titulo}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-transparent" />
+                </div>
+              ) : r.titulo === "A Cruz" ? (
+                <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-gold/20 transition-all duration-500 group-hover:ring-gold/60">
+                  <img
+                    src={aCruzAsset.url}
+                    alt={r.titulo}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-transparent" />
+                </div>
+              ) : r.titulo === "Dia de Festa" ? (
+                <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-gold/20 transition-all duration-500 group-hover:ring-gold/60">
+                  <img
+                    src={diaDeFestaAsset.url}
+                    alt={r.titulo}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-transparent" />
+                </div>
+              ) : r.titulo === "A Promessa" ? (
+                <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-gold/20 transition-all duration-500 group-hover:ring-gold/60">
+                  <img
+                    src={aPromessaAsset.url}
                     alt={r.titulo}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
