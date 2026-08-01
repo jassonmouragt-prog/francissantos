@@ -431,16 +431,13 @@ function Index() {
       {/* ─── 3.2 GALERIA ─── */}
       <section className="mx-auto max-w-5xl px-4 py-20">
         <SectionTitle kicker="Momentos" title="Galeria" />
-        <div className="flex justify-center -space-x-12 py-10 sm:-space-x-16 lg:-space-x-20">
+        <div className="group/gal flex justify-center -space-x-12 py-16 sm:-space-x-16 lg:-space-x-20">
           {galleryImages.map((img, i) => (
             <div
               key={i}
               data-reveal
-              style={{ 
-                transitionDelay: `${i * 50}ms`,
-                zIndex: i 
-              }}
-              className="reveal group relative aspect-[3/4] w-48 origin-center overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-2xl transition-all duration-500 ease-out hover:z-50 hover:!-translate-y-6 hover:!scale-[1.35] hover:border-gold/60 hover:shadow-[0_0_45px_rgba(212,175,55,0.55)] sm:w-56 lg:w-64"
+              style={{ transitionDelay: `${i * 50}ms` }}
+              className="reveal group relative z-0 aspect-[3/4] w-48 origin-center overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-2xl transition-all duration-500 ease-out group-hover/gal:!scale-90 group-hover/gal:opacity-50 hover:z-50 hover:!-translate-y-6 hover:!scale-[1.4] hover:!opacity-100 hover:border-gold/60 hover:shadow-[0_0_45px_rgba(212,175,55,0.55)] sm:w-56 lg:w-64"
             >
               <img
                 src={img.url}
