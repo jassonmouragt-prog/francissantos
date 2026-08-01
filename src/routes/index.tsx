@@ -19,16 +19,16 @@ import { useReveal } from "@/hooks/use-reveal";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Francis Santos — Cantor e Ministro Cristão" },
+      { title: "Francis Santos — Official Website" },
       {
         name: "description",
         content:
           "Site oficial de Francis Santos: músicas, vídeos, lançamentos e como apoiar o ministério. Jesus é o caminho, a verdade e a vida.",
       },
-      { property: "og:title", content: "Francis Santos — Cantor e Ministro Cristão" },
+      { property: "og:title", content: "Francis Santos — Official Website" },
       {
         property: "og:description",
-        content: "Músicas, vídeos e lançamentos de Francis Santos. Deus Abençoe!!",
+        content: "Site oficial de Francis Santos: músicas, vídeos, lançamentos e como apoiar o ministério. Jesus é o caminho, a verdade e a vida.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
