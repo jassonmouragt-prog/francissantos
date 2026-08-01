@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Copy, Check, Play, X, Disc3, Youtube, Music2 } from "lucide-react";
 import heroAsset from "@/assets/francis-hero.jpg.asset.json";
+import eternoDeusAsset from "@/assets/ETERNO_DEUS.jpg.asset.json";
 import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
@@ -181,6 +182,7 @@ function Index() {
 
   return (
     <div ref={containerRef} className="min-h-screen">
+      {/* Atualize a capa do single Eterno Deus com a imagem que está em anexo */}
       {/* ─── 1. HERO ─── */}
       <section className="relative flex h-screen min-h-[640px] items-center justify-center overflow-hidden px-4">
         {/* PLACEHOLDER: imagem de fundo do hero */}
@@ -251,10 +253,20 @@ function Index() {
               style={{ transitionDelay: `${i * 80}ms` }}
               className="reveal glass group flex flex-col items-center px-6 py-8 text-center transition-all duration-500 hover:-translate-y-1 hover:border-gold/60 hover:shadow-[var(--glow-gold-strong)]"
             >
-              {/* PLACEHOLDER: substituir pelo artwork oficial do álbum */}
-              <div className="glass grid h-24 w-24 place-items-center rounded-full">
-                <Disc3 className="h-10 w-10 text-gold transition-transform duration-700 group-hover:rotate-180" />
-              </div>
+              {r.titulo === "Eterno Deus" ? (
+                <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-gold/20 transition-all duration-500 group-hover:ring-gold/60">
+                  <img
+                    src={eternoDeusAsset.url}
+                    alt={r.titulo}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-transparent" />
+                </div>
+              ) : (
+                <div className="glass grid h-24 w-24 place-items-center rounded-full">
+                  <Disc3 className="h-10 w-10 text-gold transition-transform duration-700 group-hover:rotate-180" />
+                </div>
+              )}
               <h3 className="mt-6 text-xl text-foreground">{r.titulo}</h3>
               <p className="mt-2 text-xs uppercase tracking-[0.2em] text-muted-foreground">
                 {r.tipo}
