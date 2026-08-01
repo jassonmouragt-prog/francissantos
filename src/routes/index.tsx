@@ -263,6 +263,15 @@ function Index() {
                   />
                   <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-transparent" />
                 </div>
+              ) : r.titulo === "Filho de Davi" ? (
+                <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-gold/20 transition-all duration-500 group-hover:ring-gold/60">
+                  <img
+                    src={filhoDeDaviAsset.url}
+                    alt={r.titulo}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-transparent" />
+                </div>
               ) : (
                 <div className="glass grid h-24 w-24 place-items-center rounded-full">
                   <Disc3 className="h-10 w-10 text-gold transition-transform duration-700 group-hover:rotate-180" />
