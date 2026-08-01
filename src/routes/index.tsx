@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Copy, Check, Play, X, Disc3, Youtube, Music2 } from "lucide-react";
 import heroAsset from "@/assets/francis-hero.jpg.asset.json";
 import eternoDeusAsset from "@/assets/ETERNO_DEUS.jpg.asset.json";
+import filhoDeDaviAsset from "@/assets/FILHO_DE_DAVI.jpg.asset.json";
 import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
