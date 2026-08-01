@@ -9,6 +9,7 @@ import aCruzAsset from "@/assets/A_CRUZ.jpg.asset.json";
 import diaDeFestaAsset from "@/assets/DIA_DE_FESTA.jpg.asset.json";
 import aPromessaAsset from "@/assets/A_PROMESSA.jpg.asset.json";
 import gallery1 from "@/assets/gallery-1.jpg.asset.json";
+import { IntroOverlay } from "@/components/IntroOverlay";
 import gallery2 from "@/assets/gallery-2.jpg.asset.json";
 import gallery3 from "@/assets/gallery-3.jpg.asset.json";
 import gallery4 from "@/assets/gallery-4.jpg.asset.json";
@@ -200,7 +201,8 @@ function Index() {
 
   return (
     <div ref={containerRef} className="min-h-screen">
-      {/* Atualize a capa dos singles "Meu Socorro" (imagem em anexo 02), "A Cruz" (imagem em anexo 03), "Dia de Festa" (imagem em anexo 04), "A Promessa" (imagem em anexo 05. */}
+      <IntroOverlay />
+
       {/* ─── 1. HERO ─── */}
       <section className="relative flex h-screen min-h-[640px] items-center justify-center overflow-hidden px-4">
         {/* PLACEHOLDER: imagem de fundo do hero */}
