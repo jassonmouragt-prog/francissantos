@@ -182,6 +182,7 @@ function Index() {
 
   return (
     <div ref={containerRef} className="min-h-screen">
+      {/* Atualize a capa do single Eterno Deus com a imagem que está em anexo */}
       {/* ─── 1. HERO ─── */}
       <section className="relative flex h-screen min-h-[640px] items-center justify-center overflow-hidden px-4">
         {/* PLACEHOLDER: imagem de fundo do hero */}
