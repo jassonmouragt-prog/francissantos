@@ -8,6 +8,11 @@ import meuSocorroAsset from "@/assets/MEU_SOCORRO.jpg.asset.json";
 import aCruzAsset from "@/assets/A_CRUZ.jpg.asset.json";
 import diaDeFestaAsset from "@/assets/DIA_DE_FESTA.jpg.asset.json";
 import aPromessaAsset from "@/assets/A_PROMESSA.jpg.asset.json";
+import gallery1 from "@/assets/gallery-1.jpg.asset.json";
+import gallery2 from "@/assets/gallery-2.jpg.asset.json";
+import gallery3 from "@/assets/gallery-3.jpg.asset.json";
+import gallery4 from "@/assets/gallery-4.jpg.asset.json";
+import gallery5 from "@/assets/gallery-5.jpg.asset.json";
 import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
@@ -103,6 +108,14 @@ const videos = [
   { id: "63O-z4AYYQg", titulo: "Eterno Deus – Francis Santos" },
   { id: "u09kGb2aTtY", titulo: "A Promessa - Francis Santos" },
   { id: "9wvDdNfkX2Q", titulo: "Dia de Festa - Francis Santos" },
+];
+
+const galleryImages = [
+  { url: gallery1.url, alt: "Francis Santos Live 1" },
+  { url: gallery2.url, alt: "Francis Santos Live 2" },
+  { url: gallery3.url, alt: "Francis Santos Live 3" },
+  { url: gallery4.url, alt: "Francis Santos Live 4" },
+  { url: gallery5.url, alt: "Francis Santos Live 5" },
 ];
 
 function SectionTitle({ kicker, title }: { kicker: string; title: string }) {
@@ -412,6 +425,28 @@ function Index() {
           >
             <Youtube className="h-4 w-4 text-gold" /> Ver todos no YouTube
           </a>
+        </div>
+      </section>
+      
+      {/* ─── 3.2 GALERIA ─── */}
+      <section className="mx-auto max-w-6xl px-4 py-20">
+        <SectionTitle kicker="Momentos" title="Galeria" />
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+          {galleryImages.map((img, i) => (
+            <div
+              key={i}
+              data-reveal
+              style={{ transitionDelay: `${i * 50}ms` }}
+              className="reveal group relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/5 bg-black/40 transition-all duration-500 hover:scale-[1.02] hover:border-gold/50 hover:shadow-[0_0_25px_rgba(212,175,55,0.3)]"
+            >
+              <img
+                src={img.url}
+                alt={img.alt}
+                className="h-full w-full object-cover opacity-30 transition-all duration-700 group-hover:scale-110 group-hover:opacity-100"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-0" />
+            </div>
+          ))}
         </div>
       </section>
 
