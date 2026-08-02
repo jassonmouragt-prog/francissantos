@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { Copy, Check, Play, X, Disc3, Youtube, Music2 } from "lucide-react";
+import { useEffect, useState, useCallback } from "react";
+import { Copy, Check, Play, X, Disc3, Youtube, Music2, ChevronLeft, ChevronRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
 import heroAsset from "@/assets/francis-hero-new.png.asset.json";
 import eternoDeusAsset from "@/assets/ETERNO_DEUS.jpg.asset.json";
 import filhoDeDaviAsset from "@/assets/FILHO_DE_DAVI.jpg.asset.json";
