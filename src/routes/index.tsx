@@ -539,21 +539,13 @@ function Index() {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={galleryImages[activeGallery].url}
-              alt={galleryImages[activeGallery].alt}
+              src={galleryImages[activeGallery]?.url}
+              alt={galleryImages[activeGallery]?.alt}
               className="max-h-[90vh] w-auto object-contain"
             />
           </div>
         </div>
       )}
-
-      {/* Backdrop global para a Galeria Ativa */}
-      <div
-        className={`fixed inset-0 z-40 bg-black/55 transition-all duration-500 ${
-          activeGallery !== null ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
-        }`}
-        onClick={() => setActiveGallery(null)}
-      />
 
       {/* ─── 4. PRÓXIMOS LANÇAMENTOS ─── */}
       <section className="mx-auto max-w-2xl px-4 py-20">
