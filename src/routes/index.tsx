@@ -442,22 +442,45 @@ function Index() {
       {/* ─── 3.2 GALERIA ─── */}
       <section className="mx-auto max-w-5xl px-4 py-20">
         <SectionTitle kicker="Momentos" title="Galeria" />
-        <div className="group/gal flex justify-center -space-x-12 py-16 sm:-space-x-16 lg:-space-x-20">
-          {galleryImages.map((img, i) => (
-            <div
-              key={i}
-              data-reveal
-              style={{ transitionDelay: `${i * 50}ms` }}
-              className="reveal group relative z-0 aspect-[3/4] w-48 origin-center overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-2xl transition-all duration-500 ease-out group-hover/gal:!scale-90 group-hover/gal:opacity-50 hover:z-50 hover:!-translate-y-6 hover:!scale-[1.4] hover:!opacity-100 hover:border-gold/60 hover:shadow-[0_0_45px_rgba(212,175,55,0.55)] sm:w-56 lg:w-64"
-            >
-              <img
-                src={img.url}
-                alt={img.alt}
-                className="h-full w-full object-cover opacity-40 transition-all duration-700 group-hover:opacity-100"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 transition-opacity group-hover:opacity-0" />
-            </div>
-          ))}
+        <div
+          className="group/gal flex justify-center -space-x-12 py-16 sm:-space-x-16 lg:-space-x-20"
+          onClick={() => setActiveGallery(null)}
+        >
+          {galleryImages.map((img, i) => {
+            const isActive = activeGallery === i;
+            const hasActive = activeGallery !== null;
+            return (
+              <div
+                key={i}
+                data-reveal
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveGallery(isActive ? null : i);
+                }}
+                style={{ transitionDelay: `${i * 50}ms` }}
+                className={`reveal group relative z-0 aspect-[3/4] w-48 origin-center cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-2xl transition-all duration-500 ease-out sm:w-56 lg:w-64 ${
+                  isActive
+                    ? "z-50 !-translate-y-6 !scale-[1.4] !opacity-100 border-gold/60 shadow-[0_0_45px_rgba(212,175,55,0.55)]"
+                    : hasActive
+                      ? "!scale-90 opacity-50"
+                      : "group-hover/gal:!scale-90 group-hover/gal:opacity-50 hover:z-50 hover:!-translate-y-6 hover:!scale-[1.4] hover:!opacity-100 hover:border-gold/60 hover:shadow-[0_0_45px_rgba(212,175,55,0.55)]"
+                }`}
+              >
+                <img
+                  src={img.url}
+                  alt={img.alt}
+                  className={`h-full w-full object-cover transition-all duration-700 ${
+                    isActive ? "opacity-100" : "opacity-40 group-hover:opacity-100"
+                  }`}
+                />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity ${
+                    isActive ? "opacity-0" : "opacity-80 group-hover:opacity-0"
+                  }`}
+                />
+              </div>
+            );
+          })}
         </div>
       </section>
 
