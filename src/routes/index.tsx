@@ -470,7 +470,6 @@ function Index() {
           className={`group/gal flex justify-center -space-x-12 py-16 sm:-space-x-16 lg:-space-x-20 transition-all duration-500 ${
             activeGallery !== null ? "relative z-50" : "relative z-0"
           }`}
-          onClick={() => setActiveGallery(null)}
         >
           {galleryImages.map((img, i) => {
             const isActive = activeGallery === i;
@@ -512,7 +511,7 @@ function Index() {
 
       {/* Backdrop global para a Galeria Ativa */}
       <div
-        className={`fixed inset-0 z-40 bg-black/55 backdrop-blur-md transition-all duration-500 ${
+        className={`fixed inset-0 z-40 bg-black/55 transition-all duration-500 ${
           activeGallery !== null ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setActiveGallery(null)}
