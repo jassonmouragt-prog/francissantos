@@ -51,8 +51,14 @@ const HERO_IMG = heroAsset.url;
 // PLACEHOLDER: data do próximo lançamento — 30 dias a partir de hoje
 const LAUNCH_DATE = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
 
-// PLACEHOLDER: chave PIX do ministério
-const PIX_KEY = "[inserir aqui]";
+// Chave PIX do ministério
+const PIX_KEY = "francissilveira.adv@gmail.com";
+const PIX_BANK = "Mercado Pago";
+const PIX_PAYLOAD = buildPixPayload({
+  key: PIX_KEY,
+  merchant: "FRANCIS SANTOS",
+  city: "SAO PAULO",
+});
 
 const SPOTIFY_ARTIST = "https://open.spotify.com/artist/31JPyrr0LIkwyB9J055x6z";
 const YOUTUBE_CHANNEL = "https://www.youtube.com/@francissantos.oficial";
