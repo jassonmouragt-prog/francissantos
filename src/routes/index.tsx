@@ -511,7 +511,7 @@ function Index() {
 
       {/* Backdrop global para a Galeria Ativa */}
       <div
-        className={`fixed inset-0 z-40 bg-black/55 backdrop-blur-md transition-all duration-500 ${
+        className={`fixed inset-0 z-40 bg-black/55 transition-all duration-500 ${
           activeGallery !== null ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setActiveGallery(null)}
