@@ -283,3 +283,14 @@
 .intro-name {
   animation: intro-name-in 1900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Iluminação azul sutil no hero — predominância do laranja, acento azul */
+.hero-blue-glow {
+  background: radial-gradient(
+    circle at center,
+    oklch(0.55 0.18 240 / 0.55) 0%,
+    oklch(0.55 0.18 240 / 0.25) 40%,
+    transparent 75%
+  );
+  mix-blend-mode: screen;
+}
