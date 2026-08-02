@@ -505,35 +505,46 @@ function Index() {
             coração, você pode contribuir com este ministério das seguintes formas:
           </p>
 
-          {/* PLACEHOLDER: inserir a chave PIX real em PIX_KEY */}
-          <div className="glass mt-8 flex items-center justify-between gap-3 px-5 py-4 text-left">
-            <div className="min-w-0">
-              <p className="text-[0.65rem] uppercase tracking-[0.25em] text-muted-foreground">
-                Chave PIX
-              </p>
-              <p className="truncate text-sm text-foreground">{PIX_KEY}</p>
+          <div className="glass-dark mt-9 flex flex-col items-center gap-6 p-6 text-left sm:flex-row sm:items-stretch sm:gap-7">
+            {/* QR Code da chave PIX */}
+            <div className="shrink-0 self-center rounded-2xl bg-foreground p-3 shadow-[var(--glow-gold)]">
+              <QRCodeSVG value={PIX_PAYLOAD} size={132} level="M" bgColor="transparent" fgColor="#000000" />
             </div>
-            <button
-              type="button"
-              onClick={copyPix}
-              aria-label="Copiar chave PIX"
-              className="btn-gold grid h-10 w-10 shrink-0 place-items-center"
-            >
-              {copied ? (
-                <Check className="h-4 w-4" />
-              ) : (
-                <Copy className="h-4 w-4" />
-              )}
-            </button>
+
+            <div className="flex min-w-0 flex-1 flex-col justify-center gap-4">
+              <div>
+                <p className="text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
+                  Banco
+                </p>
+                <p className="text-sm font-medium text-foreground">{PIX_BANK}</p>
+              </div>
+
+              <div className="min-w-0">
+                <p className="text-[0.6rem] uppercase tracking-[0.3em] text-muted-foreground">
+                  Chave PIX
+                </p>
+                <div className="mt-1 flex items-center gap-2">
+                  <p className="truncate text-sm text-foreground">{PIX_KEY}</p>
+                  <button
+                    type="button"
+                    onClick={copyPix}
+                    aria-label="Copiar chave PIX"
+                    className="btn-gold grid h-9 w-9 shrink-0 place-items-center"
+                  >
+                    {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                  </button>
+                </div>
+                {copied && (
+                  <p className="mt-2 text-[0.7rem] text-gold-soft">Chave copiada!</p>
+                )}
+              </div>
+
+              <p className="text-[0.7rem] leading-relaxed text-muted-foreground">
+                Aponte a câmera do seu banco para o QR Code ou copie a chave acima.
+              </p>
+            </div>
           </div>
 
-          {/* PLACEHOLDER: adicionar link da vaquinha / plataforma de doação */}
-          <button
-            type="button"
-            className="btn-gold mt-5 w-full px-8 py-3.5 text-sm font-medium"
-          >
-            Doar agora
-          </button>
         </div>
       </section>
 
