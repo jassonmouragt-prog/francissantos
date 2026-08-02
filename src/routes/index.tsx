@@ -207,6 +207,14 @@ function Index() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  useEffect(() => {
+    if (activeGallery !== null || activeVideo !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [activeGallery, activeVideo]);
+
   const copyPix = async () => {
     await navigator.clipboard.writeText(PIX_KEY);
     setCopied(true);
