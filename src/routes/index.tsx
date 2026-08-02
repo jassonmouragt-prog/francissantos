@@ -464,10 +464,12 @@ function Index() {
       </section>
       
       {/* ─── 3.2 GALERIA ─── */}
-      <section className={`relative mx-auto max-w-5xl px-4 py-20 transition-all duration-500 ${activeGallery !== null ? "z-50" : "z-0"}`}>
+      <section className="mx-auto max-w-5xl px-4 py-20">
         <SectionTitle kicker="Momentos" title="Galeria" />
         <div
-          className="group/gal flex justify-center -space-x-12 py-16 sm:-space-x-16 lg:-space-x-20"
+          className={`group/gal flex justify-center -space-x-12 py-16 sm:-space-x-16 lg:-space-x-20 transition-all duration-500 ${
+            activeGallery !== null ? "relative z-50" : "relative z-0"
+          }`}
           onClick={() => setActiveGallery(null)}
         >
           {galleryImages.map((img, i) => {
