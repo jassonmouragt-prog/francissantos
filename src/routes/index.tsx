@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { Copy, Check, Play, X, Disc3, Youtube, Music2 } from "lucide-react";
+import { useEffect, useState, useCallback } from "react";
+import { Copy, Check, Play, X, Disc3, Youtube, Music2, ChevronLeft, ChevronRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
 import heroAsset from "@/assets/francis-hero-new.png.asset.json";
 import eternoDeusAsset from "@/assets/ETERNO_DEUS.jpg.asset.json";
 import filhoDeDaviAsset from "@/assets/FILHO_DE_DAVI.jpg.asset.json";
@@ -195,6 +196,15 @@ function Index() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [activeGallery, setActiveGallery] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center", skipSnaps: false });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -464,58 +474,78 @@ function Index() {
       </section>
       
       {/* ─── 3.2 GALERIA ─── */}
-      <section className="mx-auto max-w-5xl px-4 py-20">
+      <section className="mx-auto max-w-6xl px-4 py-20">
         <SectionTitle kicker="Momentos" title="Galeria" />
-        <div
-          className={`group/gal flex justify-center -space-x-12 py-16 sm:-space-x-16 lg:-space-x-20 transition-all duration-500 ${
-            activeGallery !== null ? "relative z-50" : "relative z-0"
-          }`}
-        >
-          {galleryImages.map((img, i) => {
-            const isActive = activeGallery === i;
-            const hasActive = activeGallery !== null;
-            return (
-              <div
-                key={i}
-                data-reveal
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setActiveGallery(isActive ? null : i);
-                }}
-                style={{ transitionDelay: `${i * 50}ms` }}
-                className={`reveal group relative aspect-[3/4] w-48 origin-center cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-2xl transition-all duration-500 ease-out sm:w-56 lg:w-64 ${
-                  isActive
-                    ? "z-50 !-translate-y-6 !scale-[1.4] !opacity-100 border-gold/60 shadow-[0_0_60px_rgba(212,175,55,0.7)]"
-                    : hasActive
-                      ? "!scale-90 opacity-[0.35]"
-                      : "z-0 group-hover/gal:!scale-90 group-hover/gal:opacity-50 hover:z-50 hover:!-translate-y-6 hover:!scale-[1.4] hover:!opacity-100 hover:border-gold/60 hover:shadow-[0_0_45px_rgba(212,175,55,0.55)]"
-                }`}
-              >
-                <img
-                  src={img.url}
-                  alt={img.alt}
-                  className={`h-full w-full object-cover transition-all duration-700 ${
-                    isActive ? "opacity-100" : "opacity-40 group-hover:opacity-100"
-                  }`}
-                />
-                <div
-                  className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity ${
-                    isActive ? "opacity-0" : "opacity-80 group-hover:opacity-0"
-                  }`}
-                />
-              </div>
-            );
-          })}
+        
+        <div className="relative group/carousel">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex">
+              {galleryImages.map((img, i) => (
+                <div 
+                  key={i} 
+                  className="relative min-w-0 flex-[0_0_80%] sm:flex-[0_0_45%] lg:flex-[0_0_30%] px-4 py-10"
+                >
+                  <div
+                    onClick={() => setActiveGallery(i)}
+                    className="reveal group/img glass-dark relative aspect-[3/4] cursor-pointer overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-gold/60"
+                    data-reveal
+                    style={{ transitionDelay: `${i * 100}ms` }}
+                  >
+                    <img
+                      src={img.url}
+                      alt={img.alt}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover/img:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button
+            onClick={scrollPrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 glass-dark grid h-12 w-12 place-items-center rounded-full text-gold transition-all hover:scale-110 md:-left-6"
+            aria-label="Anterior"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <button
+            onClick={scrollNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 glass-dark grid h-12 w-12 place-items-center rounded-full text-gold transition-all hover:scale-110 md:-right-6"
+            aria-label="Próximo"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
         </div>
       </section>
 
-      {/* Backdrop global para a Galeria Ativa */}
-      <div
-        className={`fixed inset-0 z-40 bg-black/55 transition-all duration-500 ${
-          activeGallery !== null ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
-        }`}
-        onClick={() => setActiveGallery(null)}
-      />
+      {/* Modal Galeria em Tamanho Maior */}
+      {activeGallery !== null && (
+        <div
+          className="fixed inset-0 z-[100] grid place-items-center bg-black/90 backdrop-blur-md p-4 transition-all duration-300"
+          onClick={() => setActiveGallery(null)}
+        >
+          <div className="absolute top-6 right-6 z-10">
+            <button
+              onClick={() => setActiveGallery(null)}
+              className="btn-gold grid h-12 w-12 place-items-center"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+          <div 
+            className="relative max-h-[90vh] max-w-[95vw] overflow-hidden rounded-2xl border border-gold/20 shadow-[0_0_50px_rgba(212,175,55,0.3)]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={galleryImages[activeGallery]?.url}
+              alt={galleryImages[activeGallery]?.alt}
+              className="max-h-[90vh] w-auto object-contain"
+            />
+          </div>
+        </div>
+      )}
 
       {/* ─── 4. PRÓXIMOS LANÇAMENTOS ─── */}
       <section className="mx-auto max-w-2xl px-4 py-20">
