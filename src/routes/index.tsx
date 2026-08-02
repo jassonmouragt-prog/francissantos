@@ -193,6 +193,7 @@ function VideoThumb({ id, titulo }: { id: string; titulo: string }) {
 function Index() {
   const containerRef = useReveal<HTMLDivElement>();
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [activeGallery, setActiveGallery] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
