@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Copy, Check, Play, X, Disc3, Youtube, Music2 } from "lucide-react";
-import heroAsset from "@/assets/francis-hero.jpg.asset.json";
+import heroAsset from "@/assets/francis-hero-new.png.asset.json";
 import eternoDeusAsset from "@/assets/ETERNO_DEUS.jpg.asset.json";
 import filhoDeDaviAsset from "@/assets/FILHO_DE_DAVI.jpg.asset.json";
 import meuSocorroAsset from "@/assets/MEU_SOCORRO.jpg.asset.json";
@@ -214,13 +214,24 @@ function Index() {
 
       {/* ─── 1. HERO ─── */}
       <section className="relative flex h-screen min-h-[640px] items-center justify-center overflow-hidden px-4">
-        {/* PLACEHOLDER: imagem de fundo do hero */}
-        <img
-          src={HERO_IMG}
-          alt="Francis Santos"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40" />
+        {/* imagem de fundo do hero com opacidade 75% */}
+        <div className="absolute inset-0">
+          <img
+            src={HERO_IMG}
+            alt="Francis Santos"
+            className="h-full w-full object-cover opacity-75"
+          />
+        </div>
+
+        {/* iluminação azul sutil no hero */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="hero-blue-glow absolute -left-[10%] top-[10%] h-[45%] w-[55%] rounded-full opacity-40 blur-[120px]" />
+          <div className="hero-blue-glow absolute bottom-[20%] right-[5%] h-[35%] w-[40%] rounded-full opacity-30 blur-[100px]" />
+        </div>
+
+        {/* fade inferior para integração orgânica com o site */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-[var(--background)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/60 to-transparent" />
 
         <div className="reveal relative z-10 w-full text-center" data-reveal>
           {/* Fonte "Fixture Light": aproximada por uma grotesca leve e larga */}

@@ -25,6 +25,7 @@
   --color-gold: var(--gold);
   --color-gold-soft: var(--gold-soft);
   --color-navy: var(--navy);
+  --color-blue-glow: var(--blue-glow);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -73,6 +74,7 @@
   --gold: oklch(0.78 0.17 55);
   --gold-soft: oklch(0.88 0.09 62);
   --navy: oklch(0.12 0 0); /* mantido como token de "escuro" (agora preto) */
+  --blue-glow: oklch(0.55 0.18 240);
   --glass-bg: oklch(1 0 0 / 0.06);
   --glass-border: oklch(0.78 0.17 55 / 0.28);
   --shadow-glass:
@@ -81,10 +83,21 @@
   --glow-gold-strong:
     0 0 26px oklch(0.78 0.17 55 / 0.6), 0 0 90px oklch(0.78 0.17 55 / 0.28),
     inset 0 0 22px oklch(0.78 0.17 55 / 0.16);
+  --glow-blue: 0 0 40px oklch(0.55 0.18 240 / 0.35), 0 0 100px oklch(0.55 0.18 240 / 0.18);
   --gradient-page: radial-gradient(
       120% 80% at 50% 0%,
       oklch(0.3 0.08 45 / 0.5) 0%,
       transparent 60%
+    ),
+    radial-gradient(
+      80% 60% at 90% 20%,
+      oklch(0.55 0.18 240 / 0.12) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      60% 50% at 10% 80%,
+      oklch(0.55 0.18 240 / 0.08) 0%,
+      transparent 50%
     ),
     linear-gradient(180deg, oklch(0.09 0 0) 0%, oklch(0.06 0 0) 50%, oklch(0.09 0 0) 100%);
   --background: oklch(0.07 0 0);
@@ -269,4 +282,15 @@
 
 .intro-name {
   animation: intro-name-in 1900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Iluminação azul sutil no hero — predominância do laranja, acento azul */
+.hero-blue-glow {
+  background: radial-gradient(
+    circle at center,
+    oklch(0.55 0.18 240 / 0.55) 0%,
+    oklch(0.55 0.18 240 / 0.25) 40%,
+    transparent 75%
+  );
+  mix-blend-mode: screen;
 }
