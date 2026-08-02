@@ -470,7 +470,6 @@ function Index() {
           className={`group/gal flex justify-center -space-x-12 py-16 sm:-space-x-16 lg:-space-x-20 transition-all duration-500 ${
             activeGallery !== null ? "relative z-50" : "relative z-0"
           }`}
-          onClick={() => setActiveGallery(null)}
         >
           {galleryImages.map((img, i) => {
             const isActive = activeGallery === i;
