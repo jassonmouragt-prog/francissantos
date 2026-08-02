@@ -15,6 +15,8 @@ import gallery3 from "@/assets/gallery-3.jpg.asset.json";
 import gallery4 from "@/assets/gallery-4.jpg.asset.json";
 import gallery5 from "@/assets/gallery-5.jpg.asset.json";
 import { useReveal } from "@/hooks/use-reveal";
+import { buildPixPayload } from "@/lib/pix";
+import { QRCodeSVG } from "qrcode.react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
