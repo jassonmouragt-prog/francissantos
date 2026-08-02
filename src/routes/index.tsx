@@ -196,6 +196,15 @@ function Index() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [activeGallery, setActiveGallery] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center", skipSnaps: false });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
