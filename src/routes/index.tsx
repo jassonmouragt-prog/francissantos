@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, useCallback } from "react";
-import { Copy, Check, Play, X, Disc3, Youtube, Music2, ChevronLeft, ChevronRight } from "lucide-react";
+import { Copy, Check, Play, X, Disc3, Youtube, Music2, ChevronLeft, ChevronRight, Calendar, Send, ShoppingBag, MapPin } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import heroAsset from "@/assets/francis-hero-new.png.asset.json";
 import eternoDeusAsset from "@/assets/ETERNO_DEUS.jpg.asset.json";
@@ -196,6 +196,7 @@ function Index() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [activeGallery, setActiveGallery] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
+  const [formData, setFormData] = useState({ state: "", type: "", description: "" });
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center", skipSnaps: false });
 
   const scrollPrev = useCallback(() => {
@@ -230,6 +231,18 @@ function Index() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const message = `Olá Francis! Gostaria de fazer um convite para um evento.\n\nEstado: ${formData.state}\nTipo do Evento: ${formData.type}\nDescrição: ${formData.description}`;
+    const whatsappUrl = `https://wa.me/5598991738473?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
+  const brazilianStates = [
+    "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", 
+    "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
+  ];
 
   return (
     <div ref={containerRef} className="min-h-screen">
@@ -298,6 +311,22 @@ function Index() {
           <p className="mt-8 font-display text-xl italic text-gold">“Deus Abençoe!!”</p>
           <p className="mt-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
             assinatura que resume o coração de seu ministério
+          </p>
+        </div>
+      </section>
+
+      {/* ─── 2.1 AGENDA ─── */}
+      <section className="mx-auto max-w-4xl px-4 py-20">
+        <SectionTitle kicker="Compromissos" title="Agenda" />
+        <div className="reveal glass px-7 py-16 text-center sm:px-12" data-reveal>
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gold/10 text-gold">
+            <Calendar className="h-8 w-8" />
+          </div>
+          <p className="text-lg text-foreground/90">
+            No momento a agenda não tem nenhum show, mas vou atualizando quando aparecer algum convite.
+          </p>
+          <p className="mt-4 text-sm text-muted-foreground">
+            Fique atento às nossas redes sociais para novidades.
           </p>
         </div>
       </section>
@@ -632,6 +661,90 @@ function Index() {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      {/* ─── 5.1 LOJA ─── */}
+      <section className="mx-auto max-w-4xl px-4 py-20">
+        <SectionTitle kicker="Produtos" title="Loja Oficial" />
+        <div className="reveal glass group relative overflow-hidden px-7 py-20 text-center sm:px-12" data-reveal>
+          {/* Brilho de fundo animado para a loja */}
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.05),transparent_70%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+          
+          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gold/10 text-gold shadow-[0_0_20px_rgba(212,175,55,0.1)] transition-transform duration-500 group-hover:scale-110 group-hover:shadow-[var(--glow-gold)]">
+            <ShoppingBag className="h-10 w-10" />
+          </div>
+          
+          <h3 className="text-3xl font-light tracking-widest text-foreground uppercase">Em Breve</h3>
+          <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
+            Estamos preparando uma linha exclusiva de produtos para abençoar sua vida. 
+            Em breve você poderá adquirir camisetas, acessórios e muito mais.
+          </p>
+          
+          <div className="mt-8 inline-block rounded-full border border-gold/20 px-6 py-2 text-xs uppercase tracking-[0.3em] text-gold/60">
+            Processo de confecção
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 5.2 CONTATO E CONVITE ─── */}
+      <section className="mx-auto max-w-3xl px-4 py-20">
+        <SectionTitle kicker="Ministração" title="Convide o Cantor" />
+        <div className="reveal glass px-7 py-12 sm:px-12" data-reveal>
+          <p className="mb-10 text-center text-base leading-loose text-foreground/85">
+            Deseja convidar Francis Santos para o seu evento? Preencha as informações abaixo e nossa equipe entrará em contato via WhatsApp.
+          </p>
+          
+          <form onSubmit={handleContactSubmit} className="space-y-6">
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="space-y-2">
+                <label className="text-xs uppercase tracking-[0.2em] text-gold/80 ml-1">Estado (UF)</label>
+                <select
+                  required
+                  value={formData.state}
+                  onChange={(e) => setFormData({ ...formData, state: e.target.value })}
+                  className="glass w-full bg-transparent px-5 py-3 text-sm text-foreground outline-none transition-all focus:border-gold focus:shadow-[var(--glow-gold-soft)]"
+                >
+                  <option value="" disabled className="bg-[#0c0c0c]">Selecione o estado</option>
+                  {brazilianStates.map(uf => (
+                    <option key={uf} value={uf} className="bg-[#0c0c0c]">{uf}</option>
+                  ))}
+                </select>
+              </div>
+              
+              <div className="space-y-2">
+                <label className="text-xs uppercase tracking-[0.2em] text-gold/80 ml-1">Tipo do Evento</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Ex: Culto, Congresso, Show..."
+                  value={formData.type}
+                  onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+                  className="glass w-full px-5 py-3 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground focus:border-gold focus:shadow-[var(--glow-gold-soft)]"
+                />
+              </div>
+            </div>
+            
+            <div className="space-y-2">
+              <label className="text-xs uppercase tracking-[0.2em] text-gold/80 ml-1">Descrição do Evento</label>
+              <textarea
+                required
+                rows={4}
+                placeholder="Conte-nos um pouco sobre o evento (data prevista, local, público esperado...)"
+                value={formData.description}
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                className="glass w-full resize-none px-5 py-3 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground focus:border-gold focus:shadow-[var(--glow-gold-soft)]"
+              />
+            </div>
+            
+            <button
+              type="submit"
+              className="btn-gold group flex w-full items-center justify-center gap-3 py-4 text-sm font-bold uppercase tracking-[0.2em]"
+            >
+              <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              Enviar Convite
+            </button>
+          </form>
         </div>
       </section>
 
