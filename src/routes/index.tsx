@@ -530,23 +530,23 @@ function Index() {
       </section>
       
       {/* ─── 3.2 GALERIA ─── */}
-      <section className="py-20">
+      <section className="py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-4">
           <SectionTitle kicker="Momentos" title="Galeria" />
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-5">
             {galleryImages.map((img, index) => (
               <div
                 key={index}
                 onClick={() => setActiveGallery(index)}
-                className="group relative aspect-[3/4] cursor-pointer overflow-hidden rounded-2xl border border-gold/30 bg-card shadow-lg transition-transform duration-300 hover:scale-105"
+                className="group relative aspect-[4/5] sm:aspect-[3/4] cursor-pointer overflow-hidden rounded-xl border border-gold/30 bg-card shadow-md transition-all duration-300 hover:border-gold active:scale-95"
               >
                 <img
                   src={img.src}
                   alt={img.alt}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end p-4">
-                  <span className="text-sm font-medium text-white">{img.alt}</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                  <span className="text-xs sm:text-sm font-medium text-white line-clamp-1">{img.alt}</span>
                 </div>
               </div>
             ))}
