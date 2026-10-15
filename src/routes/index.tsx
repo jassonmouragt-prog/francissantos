@@ -3,7 +3,6 @@ import { useEffect, useState, useCallback } from "react";
 import { Copy, Check, Play, X, Disc3, Youtube, Music2, ChevronLeft, ChevronRight, Calendar, Send, ShoppingBag, MapPin } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { IntroOverlay } from "@/components/IntroOverlay";
-import DominoGallery from "@/components/DominoGallery";
 import { useReveal } from "@/hooks/use-reveal";
 import { buildPixPayload } from "@/lib/pix";
 import { QRCodeSVG } from "qrcode.react";
