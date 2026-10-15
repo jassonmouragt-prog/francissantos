@@ -529,10 +529,10 @@ function Index() {
         </div>
       </section>
       
-      {/* ─── 3.2 GALERIA ─── */}
+      {/* ─── 3.2 MOMENTOS / GALERIA ─── */}
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-4">
-          <SectionTitle kicker="Momentos" title="Galeria" />
+          <SectionTitle kicker="Galeria" title="Momentos" />
           <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-5">
             {galleryImages.map((img, index) => (
               <div
