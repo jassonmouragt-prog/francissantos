@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import PatternWaves from "../components/PatternWaves";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -117,6 +118,18 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <div className="fixed inset-0 -z-10" aria-hidden="true">
+          <PatternWaves
+            preset="silk"
+            color="#d4af37"
+            backgroundColor="transparent"
+            opacity={0.25}
+            fade="edges"
+            interactive={false}
+            cursorSize={50}
+            cursorStrength={0.6}
+          />
+        </div>
         {children}
         <Scripts />
       </body>
