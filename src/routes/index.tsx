@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from "react";
 import { Copy, Check, Play, X, Disc3, Youtube, Music2, ChevronLeft, ChevronRight, Calendar, Send, ShoppingBag, MapPin } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { IntroOverlay } from "@/components/IntroOverlay";
+import DominoGallery from "@/components/DominoGallery";
 import { useReveal } from "@/hooks/use-reveal";
 import { buildPixPayload } from "@/lib/pix";
 import { QRCodeSVG } from "qrcode.react";
@@ -529,54 +530,18 @@ function Index() {
       </section>
       
       {/* ─── 3.2 GALERIA ─── */}
-      <section className="mx-auto max-w-6xl px-4 py-20">
-        <SectionTitle kicker="Momentos" title="Galeria" />
-        
-        <div className="relative group/carousel">
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex">
-              {galleryImages.map((img, i) => (
-                <div 
-                  key={i} 
-                  className="relative min-w-0 flex-[0_0_80%] sm:flex-[0_0_45%] lg:flex-[0_0_30%] px-4 py-10"
-                >
-                  <div
-                    onClick={() => setActiveGallery(i)}
-                    className="reveal group/img glass-dark relative aspect-[3/4] cursor-pointer overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-gold/60"
-                    data-reveal
-                    style={{ transitionDelay: `${i * 100}ms` }}
-                  >
-                    <img
-                      src={img.url}
-                      alt={img.alt}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover/img:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-4">
-                      <p className="text-xs font-medium uppercase tracking-[0.2em] text-white/80">{img.alt}</p>
-                      <div className="mt-2 h-px w-8 bg-gold/50 transition-all duration-500 group-hover/img:w-14" />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <button
-            onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 glass-dark grid h-12 w-12 place-items-center rounded-full text-gold transition-all hover:scale-110 md:-left-6"
-            aria-label="Anterior"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </button>
-          <button
-            onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 glass-dark grid h-12 w-12 place-items-center rounded-full text-gold transition-all hover:scale-110 md:-right-6"
-            aria-label="Próximo"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </button>
+      <section className="py-20">
+        <div className="mx-auto max-w-6xl px-4">
+          <SectionTitle kicker="Momentos" title="Galeria" />
         </div>
+        <DominoGallery
+          items={galleryImages}
+          autoplay
+          standAngle={94}
+          cardWidth={220}
+          cardHeight={590}
+          onSelect={(index) => setActiveGallery(index)}
+        />
       </section>
 
       {/* Modal Galeria em Tamanho Maior */}
