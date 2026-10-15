@@ -194,67 +194,48 @@ export function DominoGallery({
     <div
       ref={setRootRef}
       data-slot="domino-gallery"
-      className={cx("relative w-full", className)}
-      style={{ height: isControlled ? stageHeight : `calc(100vh + ${scrollLength}px)`, ...style }}
+      className={cx("relative w-full py-12", className)}
+      style={{ ...style }}
       {...rest}
     >
-      <div className="sticky top-0 flex h-screen w-full items-center justify-center" style={isControlled ? { height: stageHeight, position: "static" } : undefined}>
-        <div
-          role="list"
-          className="flex max-w-full justify-center px-6 py-8"
-          style={{ gap, perspective: 1500, perspectiveOrigin: "50% -45%" }}
-        >
-          {items.map((item, index) => {
-            const isSelected = selected === index;
-            return (
-              <div key={`${item.src}-${index}`} role="listitem" className="relative shrink-0" style={{ width, height, transformStyle: "preserve-3d" }}>
-                <button
-                  ref={(node) => {
-                    cardRefs.current[index] = node;
-                  }}
-                  type="button"
-                  data-card
-                  data-selected={isSelected || undefined}
-                  aria-label={item.title ?? item.alt ?? `Image ${index + 1}`}
-                  aria-pressed={isSelected}
-                  onClick={() => {
-                    const next = isSelected ? null : index;
-                    setSelected(next);
-                    if (next !== null) onSelect?.(index, item);
-                  }}
-                  className={cx(
-                    "relative block size-full overflow-hidden rounded-xl border border-border bg-card text-left shadow-[0_18px_40px_-16px_rgba(0,0,0,0.6)] transition-[outline,box-shadow] duration-300",
-                    "focus-visible:[outline:2px_solid_transparent] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                    isSelected && "ring-2 ring-primary",
-                  )}
-                  style={{ transformOrigin: "50% 100%", transform: `rotateX(${standAngle}deg)`, backfaceVisibility: "hidden", "--fall": 0 } as React.CSSProperties}
-                >
-                  <img
-                    src={item.src}
-                    alt={item.alt ?? ""}
-                    loading="eager"
-                    decoding="sync"
-                    draggable={false}
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                  {item.title && (
-                    <span
-                      className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 pb-2.5 pt-8 text-xs font-medium text-white"
-                      style={{ opacity: "var(--fall)" }}
-                    >
-                      {item.title}
-                    </span>
-                  )}
-                </button>
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-x-2 -bottom-2 h-3 rounded-full bg-black/40 blur-md"
-                  style={{ opacity: "calc(0.25 + var(--fall, 0) * 0.5)", transform: "scaleX(calc(0.6 + var(--fall, 0) * 0.4))" }}
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-6 px-4">
+        {items.map((item, index) => {
+          const isSelected = selected === index;
+          return (
+            <div key={`${item.src}-${index}`} role="listitem" className="relative shrink-0" style={{ width, height }}>
+              <button
+                type="button"
+                data-card
+                data-selected={isSelected || undefined}
+                aria-label={item.title ?? item.alt ?? `Image ${index + 1}`}
+                aria-pressed={isSelected}
+                onClick={() => {
+                  const next = isSelected ? null : index;
+                  setSelected(next);
+                  if (next !== null) onSelect?.(index, item);
+                }}
+                className={cx(
+                  "relative block size-full overflow-hidden rounded-xl border border-gold/30 bg-card text-left shadow-[0_18px_40px_-16px_rgba(0,0,0,0.6)] transition-transform duration-300 hover:scale-105",
+                  isSelected && "ring-2 ring-primary",
+                )}
+              >
+                <img
+                  src={item.src}
+                  alt={item.alt ?? ""}
+                  loading="eager"
+                  decoding="sync"
+                  draggable={false}
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
-              </div>
-            );
-          })}
-        </div>
+                {item.title && (
+                  <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-3 pb-2.5 pt-8 text-xs font-medium text-white">
+                    {item.title}
+                  </span>
+                )}
+              </button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
