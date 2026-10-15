@@ -35,12 +35,7 @@ function clamp01(value: number) {
 }
 
 function topple(t: number) {
-  if (t < 0.72) {
-    const u = t / 0.72;
-    return u * u;
-  }
-  const u = (t - 0.72) / 0.28;
-  return 1 + 0.06 * Math.sin(u * Math.PI) * (1 - u);
+  return 1;
 }
 
 function cardProgress(progress: number, index: number, count: number) {
