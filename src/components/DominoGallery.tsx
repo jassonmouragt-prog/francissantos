@@ -240,8 +240,8 @@ export function DominoGallery({
                     loading="lazy"
                     decoding="async"
                     draggable={false}
-                    className="absolute inset-0 size-full object-cover"
-                    style={{ filter: "brightness(calc(0.55 + var(--fall) * 0.45))" }}
+                    className="absolute inset-0 size-full object-cover filter-none"
+                    style={{ filter: "none" }}
                   />
                   {item.title && (
                     <span
