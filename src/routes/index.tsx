@@ -2,19 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, useCallback } from "react";
 import { Copy, Check, Play, X, Disc3, Youtube, Music2, ChevronLeft, ChevronRight, Calendar, Send, ShoppingBag, MapPin } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
-import heroAsset from "@/assets/francis-hero-new.png.asset.json";
-import eternoDeusAsset from "@/assets/ETERNO_DEUS.jpg.asset.json";
-import filhoDeDaviAsset from "@/assets/FILHO_DE_DAVI.jpg.asset.json";
-import meuSocorroAsset from "@/assets/MEU_SOCORRO.jpg.asset.json";
-import aCruzAsset from "@/assets/A_CRUZ.jpg.asset.json";
-import diaDeFestaAsset from "@/assets/DIA_DE_FESTA.jpg.asset.json";
-import aPromessaAsset from "@/assets/A_PROMESSA.jpg.asset.json";
-import gallery1 from "@/assets/gallery-1.jpg.asset.json";
 import { IntroOverlay } from "@/components/IntroOverlay";
-import gallery2 from "@/assets/gallery-2.jpg.asset.json";
-import gallery3 from "@/assets/gallery-3.jpg.asset.json";
-import gallery4 from "@/assets/gallery-4.jpg.asset.json";
-import gallery5 from "@/assets/gallery-5.jpg.asset.json";
 import { useReveal } from "@/hooks/use-reveal";
 import { buildPixPayload } from "@/lib/pix";
 import { QRCodeSVG } from "qrcode.react";
@@ -49,7 +37,7 @@ export const Route = createFileRoute("/")({
  */
 
 // PLACEHOLDER: foto do hero (substituir pela foto oficial em alta resolução)
-  const HERO_IMG = heroAsset.url;
+  const HERO_IMG = "/images/francis-hero-new.png";
   const HERO_VIDEO_URL = "/video-hero.mp4";
 
 // PLACEHOLDER: data do próximo lançamento — 30 dias a partir de hoje
@@ -114,7 +102,7 @@ const tracks = [
 // PLACEHOLDER: substituir pelos IDs reais dos vídeos do canal
 const videos = [
   { id: "_bpHhRC5EQI", titulo: "Rei dos Reis - Live Session" },
-  { id: "KreeogXYJbw", titulo: "Salmos - Live Session" },
+  { id: "8Q7-yICdmJo", titulo: "Salmos - Clipe Oficial" },
   { id: "QX3IEIiKYqg", titulo: "Meu Socorro – Francis Santos" },
   { id: "63O-z4AYYQg", titulo: "Eterno Deus – Francis Santos" },
   { id: "u09kGb2aTtY", titulo: "A Promessa - Francis Santos" },
@@ -122,11 +110,11 @@ const videos = [
 ];
 
 const galleryImages = [
-  { url: gallery1.url, alt: "Francis Santos Live 1" },
-  { url: gallery2.url, alt: "Francis Santos Live 2" },
-  { url: gallery3.url, alt: "Francis Santos Live 3" },
-  { url: gallery4.url, alt: "Francis Santos Live 4" },
-  { url: gallery5.url, alt: "Francis Santos Live 5" },
+  { url: "/images/gallery-1.jpg", alt: "Francis Santos Live 1" },
+  { url: "/images/gallery-2.jpg", alt: "Francis Santos Live 2" },
+  { url: "/images/gallery-3.jpg", alt: "Francis Santos Live 3" },
+  { url: "/images/gallery-4.jpg", alt: "Francis Santos Live 4" },
+  { url: "/images/gallery-5.jpg", alt: "Francis Santos Live 5" },
 ];
 
 function SectionTitle({ kicker, title }: { kicker: string; title: string }) {
@@ -385,7 +373,7 @@ function Index() {
               {r.titulo === "Eterno Deus" ? (
                 <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-gold/20 transition-all duration-500 group-hover:ring-gold/60">
                   <img
-                    src={eternoDeusAsset.url}
+                    src="/images/eterno-deus.jpg"
                     alt={r.titulo}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
@@ -394,7 +382,7 @@ function Index() {
               ) : r.titulo === "Filho de Davi" ? (
                 <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-gold/20 transition-all duration-500 group-hover:ring-gold/60">
                   <img
-                    src={filhoDeDaviAsset.url}
+                    src="/images/filho-de-davi.jpg"
                     alt={r.titulo}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
@@ -403,7 +391,7 @@ function Index() {
               ) : r.titulo === "Meu Socorro (Acústico)" ? (
                 <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-gold/20 transition-all duration-500 group-hover:ring-gold/60">
                   <img
-                    src={meuSocorroAsset.url}
+                    src="/images/meu-socorro.jpg"
                     alt={r.titulo}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
@@ -412,7 +400,7 @@ function Index() {
               ) : r.titulo === "A Cruz" ? (
                 <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-gold/20 transition-all duration-500 group-hover:ring-gold/60">
                   <img
-                    src={aCruzAsset.url}
+                    src="/images/a-cruz.jpg"
                     alt={r.titulo}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
@@ -421,7 +409,7 @@ function Index() {
               ) : r.titulo === "Dia de Festa" ? (
                 <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-gold/20 transition-all duration-500 group-hover:ring-gold/60">
                   <img
-                    src={diaDeFestaAsset.url}
+                    src="/images/dia-de-festa.jpg"
                     alt={r.titulo}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
@@ -430,7 +418,7 @@ function Index() {
               ) : r.titulo === "A Promessa" ? (
                 <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-gold/20 transition-all duration-500 group-hover:ring-gold/60">
                   <img
-                    src={aPromessaAsset.url}
+                    src="/images/a-promessa.jpg"
                     alt={r.titulo}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
