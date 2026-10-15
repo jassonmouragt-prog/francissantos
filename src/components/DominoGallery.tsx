@@ -232,11 +232,10 @@ export function DominoGallery({
                   <img
                     src={item.src}
                     alt={item.alt ?? ""}
-                    loading="lazy"
-                    decoding="async"
+                    loading="eager"
+                    decoding="sync"
                     draggable={false}
-                    className="absolute inset-0 size-full object-cover filter-none"
-                    style={{ filter: "none" }}
+                    className="absolute inset-0 h-full w-full object-cover"
                   />
                   {item.title && (
                     <span
