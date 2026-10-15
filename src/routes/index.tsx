@@ -111,11 +111,11 @@ const videos = [
 ];
 
 const galleryImages = [
-  { url: "/images/gallery-1.jpg", alt: "Francis Santos Live 1" },
-  { url: "/images/gallery-2.jpg", alt: "Francis Santos Live 2" },
-  { url: "/images/gallery-3.jpg", alt: "Francis Santos Live 3" },
-  { url: "/images/gallery-4.jpg", alt: "Francis Santos Live 4" },
-  { url: "/images/gallery-5.jpg", alt: "Francis Santos Live 5" },
+  { src: "/images/gallery-1.jpg", alt: "Francis Santos Live 1" },
+  { src: "/images/gallery-2.jpg", alt: "Francis Santos Live 2" },
+  { src: "/images/gallery-3.jpg", alt: "Francis Santos Live 3" },
+  { src: "/images/gallery-4.jpg", alt: "Francis Santos Live 4" },
+  { src: "/images/gallery-5.jpg", alt: "Francis Santos Live 5" },
 ];
 
 function SectionTitle({ kicker, title }: { kicker: string; title: string }) {
@@ -563,7 +563,7 @@ function Index() {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={galleryImages[activeGallery]?.url}
+              src={galleryImages[activeGallery]?.src}
               alt={galleryImages[activeGallery]?.alt}
               className="max-h-[90vh] w-auto object-contain"
             />
