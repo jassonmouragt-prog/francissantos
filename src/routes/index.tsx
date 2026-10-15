@@ -537,7 +537,7 @@ function Index() {
         <DominoGallery
           items={galleryImages}
           autoplay
-          standAngle={94}
+          standAngle={80}
           cardWidth={220}
           cardHeight={590}
           onSelect={(index) => setActiveGallery(index)}
